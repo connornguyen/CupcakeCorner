@@ -12,7 +12,27 @@ struct CheckOutView: View {
     
 
     var body: some View {
-        Text("Hello")
+        ScrollView {
+            VStack {
+                AsyncImage(url: URL(string: "https://hws.dev/img/cupcakes@3x.jpg"), scale: 3) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(height: 250)
+                
+                Text("Your total is \(order.cost, format: .currency(code: "USD"))")
+                    .font(.title)
+                
+                Button("Place order", action: {})
+                    .padding()
+            }
+        }
+        .navigationTitle("Check out")
+        .navigationBarTitleDisplayMode(.inline)
+        .scrollBounceBehavior(.basedOnSize)
     }
 }
 

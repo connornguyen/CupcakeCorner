@@ -33,4 +33,19 @@ class Order {
         
         return true
     }
+    
+    //Use decimal for the cost, which is more accurate
+    var cost: Decimal {
+        //$2 per cake
+        var cost = Decimal(quantity * 2)
+        //Complicated cake cost more
+        cost += Decimal(type) / 2
+        
+        //extraFrosting: $1
+        cost += Decimal(quantity)
+        //extraPrinkles: $0.5
+        cost += Decimal(quantity) / 2
+        
+        return cost
+    }
 }
