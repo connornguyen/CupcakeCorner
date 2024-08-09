@@ -8,7 +8,20 @@
 import Foundation
 
 @Observable
-class Order {
+class Order: Codable {
+    //This to replace the _name when getting data from API.
+    enum CodingKeys: String, CodingKey {
+        case _type = "type"
+        case _quantity = "quantity"
+        case _speacialRequestEnabled = "specialRequestEnabled"
+        case _extraFrosting = "extraFrosting"
+        case _addSprinkles = "addSprinkles"
+        case _name = "name"
+        case _city = "city"
+        case _streetAddress = "streetAddress"
+        case _zipCode = "zip"
+    }
+    
     static let types = [ "Vanilla", "Strawberry", "Chocolate", "Rainbow"]
     var type = 0
     var quantity = 2
