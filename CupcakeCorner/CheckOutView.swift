@@ -55,6 +55,7 @@ struct CheckOutView: View {
         let url = URL(string: "https://reqres.in/api/cupcakes")!
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("reqres-free-v1", forHTTPHeaderField: "x-api-key")
         request.httpMethod = "POST"
         
         do {
@@ -65,7 +66,8 @@ struct CheckOutView: View {
             showingConfirmation = true
             
         } catch {
-            print("Error, could not send data, \(error.localizedDescription)")
+            comfirmPlaceOrderMessage = "Error: \(error.localizedDescription)"
+            showingConfirmation = true
         }
     }
 }

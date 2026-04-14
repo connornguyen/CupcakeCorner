@@ -55,9 +55,9 @@ class Order: Codable {
         cost += Decimal(type) / 2
         
         //extraFrosting: $1
-        cost += Decimal(quantity)
-        //extraPrinkles: $0.5
-        cost += Decimal(quantity) / 2
+        if extraFrosting { cost += Decimal(quantity) }
+        //extraSprinkles: $0.5
+        if addSprinkles { cost += Decimal(quantity) / 2 }
         
         return cost
     }
